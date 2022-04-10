@@ -96,6 +96,5 @@ public class UserServiceImpl implements UserService {
 		userDto.setPassword(user.getPassword());
 		userDto.setAbout(user.getAbout());
 		return userDto;
-	
 	}
 }
