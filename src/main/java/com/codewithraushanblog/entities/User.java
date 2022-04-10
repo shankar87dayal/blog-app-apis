@@ -19,6 +19,7 @@ import javax.persistence.GenerationType;
 @Getter
 @Setter
 
+
 public class User {
 
 	
