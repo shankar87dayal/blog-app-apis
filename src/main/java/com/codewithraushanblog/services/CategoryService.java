@@ -6,6 +6,7 @@ import com.codewithraushanblog.payloads.CategoryDto;
 
 public interface CategoryService {
 
+	
 //	create
 	CategoryDto createCategory(CategoryDto categoryDto);
 	
