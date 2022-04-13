@@ -46,7 +46,7 @@ public class CategoryController {
 	
 //	delete
 	
-	@DeleteMapping("/ {catId}")
+	@DeleteMapping("/{catId}")
 	public ResponseEntity<ApiResponse> deleteCategory( @PathVariable Integer catId)
 	{
 		this.categoryService.deleteCategory(catId);
@@ -57,7 +57,7 @@ public class CategoryController {
 //	get
 	
 	
-	@GetMapping("/ {catId}")
+	@GetMapping("/{catId}")
 	public ResponseEntity<CategoryDto> getCategory( @PathVariable Integer catId)
 	{
 		CategoryDto categoryDto = this.categoryService.getCategory(catId);
@@ -67,7 +67,6 @@ public class CategoryController {
 	
 //	get all
 	
-
 	@GetMapping("/")
 	public ResponseEntity<List<CategoryDto>> getCategories()
 	{

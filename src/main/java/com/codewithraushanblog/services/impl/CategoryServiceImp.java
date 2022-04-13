@@ -16,7 +16,6 @@ import com.codewithraushanblog.services.CategoryService;
 @Service
 public class CategoryServiceImp implements CategoryService  {
 
-	
 	@Autowired
 	private CategoryRepo categoryRepo;
 	
