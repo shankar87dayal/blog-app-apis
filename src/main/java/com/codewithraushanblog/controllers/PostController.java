@@ -21,9 +21,9 @@ public class PostController {
 	private PostService postService;
 
 //	create
-	@PostMapping
+	@PostMapping("/user/{idValue}/category/{categoryId}/posts")
 	public ResponseEntity<PostDto> createPost(@RequestBody 
-			PostDto postDto,@PathVariable Integer userId,
+			PostDto postDto,@PathVariable(name ="idValue") Integer userId,
 			@PathVariable Integer categoryId){
 		PostDto createPost = this.postService.createPost(postDto, userId, categoryId);
 		return new ResponseEntity<PostDto>(createPost, HttpStatus.CREATED);
