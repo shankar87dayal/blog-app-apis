@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.codewithraushanblog.exceptions.ApiException;
 import com.codewithraushanblog.payloads.JwtAuthRequest;
 import com.codewithraushanblog.payloads.JwtAuthResponse;
 import com.codewithraushanblog.security.JwtTokenHelper;
@@ -62,7 +63,7 @@ public class AuthController {
 			
 			System.out.println("invalid details !!");
 			
-			throw new Exception("Invalid usernamr and password !!");
+			throw new ApiException("Invalid usernamr and password !!");
 		}
 	}
 }
