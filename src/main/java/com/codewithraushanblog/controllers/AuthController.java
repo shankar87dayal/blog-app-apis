@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.codewithraushanblog.exceptions.ApiException;
 import com.codewithraushanblog.payloads.JwtAuthRequest;
 import com.codewithraushanblog.payloads.JwtAuthResponse;
+import com.codewithraushanblog.payloads.UserDto;
 import com.codewithraushanblog.security.JwtTokenHelper;
+import com.codewithraushanblog.services.UserService;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -31,6 +33,9 @@ public class AuthController {
 	
 	@Autowired
 	private AuthenticationManager authenticationManager;
+	
+	@Autowired
+	private UserService userService;
 	
 	
 	@PostMapping("/login")
@@ -66,4 +71,27 @@ public class AuthController {
 			throw new ApiException("Invalid usernamr and password !!");
 		}
 	}
+	
+//	register new user api
+	
+	@PostMapping("/register")
+	public ResponseEntity<UserDto> registerUser(@RequestBody UserDto usrDto)
+	{
+		
+		UserDto registeredUser = this.userService.registerNewUser(usrDto);
+		
+		return new ResponseEntity<UserDto>(registeredUser, HttpStatus.CREATED);
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
