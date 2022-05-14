@@ -14,6 +14,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import com.codewithraushanblog.security.CustomUserDetailService;
 import com.codewithraushanblog.security.JwtAuthenticationEntryPoint;
@@ -22,6 +23,7 @@ import com.codewithraushanblog.security.JwtAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
+@EnableWebMvc
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
@@ -42,6 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		csrf().disable()
 		.authorizeHttpRequests()
 		.antMatchers("/api/auth/**").permitAll()
+		.antMatchers("/v3/api-docs").permitAll()
 		.antMatchers(HttpMethod.GET).permitAll()
 		.anyRequest()
 		.authenticated()
