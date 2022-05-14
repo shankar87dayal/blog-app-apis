@@ -27,6 +27,15 @@ import com.codewithraushanblog.security.JwtAuthenticationFilter;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
+	private static final String[] PUBLIC_URLS= {
+			"/api/auth/**",
+			"/v3/api-docs",
+			"/v2/api-docs",
+			"/swagger-resources/**",
+			"/swagger-ui/**",
+			"/webjars/**"
+	};
+	
 	@Autowired
 	private CustomUserDetailService customUserDetailService;
 	
@@ -43,8 +52,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		http.
 		csrf().disable()
 		.authorizeHttpRequests()
-		.antMatchers("/api/auth/**").permitAll()
-		.antMatchers("/v3/api-docs").permitAll()
+		.antMatchers(PUBLIC_URLS).permitAll()
 		.antMatchers(HttpMethod.GET).permitAll()
 		.anyRequest()
 		.authenticated()
